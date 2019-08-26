@@ -1,0 +1,104 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.lang.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<?import javafx.collections.FXCollections?>
+<?import javafx.scene.control.cell.PropertyValueFactory?>
+<BorderPane fx:id="updatePanel" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/8.0.172-ea"
+            fx:controller="com.kanyantamubanga.mybudget.Controller" stylesheets="@styles.css">
+    <left>
+        <VBox id="mainVbox" alignment="TOP_CENTER" prefWidth="300">
+            <HBox id="logoHbox" alignment="CENTER" prefWidth="300" prefHeight="100">
+                <Label id="logoLabel" text="My Budget App"/>
+            </HBox>
+
+            <VBox id="navigationVbox" VBox.vgrow="ALWAYS">
+                <Button text="OVERVIEW" onAction="#handleOverviewButtonAction"/>
+                <Button text="INCOME"/>
+                <Button text="EXPENSES"/>
+                <Button text="MONTHLY PLANNER"/>
+                <Button text="SAVINGS PROJECTS"/>
+                <Button text="REPORTS"/>
+                <Button text="SETTINGS"/>
+
+            </VBox>
+
+            <VBox id="exitVBox" alignment="BOTTOM_CENTER" prefWidth="300" prefHeight="150">
+                <Button id="exitButton" text="EXIT"/>
+            </VBox>
+
+            <VBox id="bottomVbox" alignment="BOTTOM_CENTER" prefWidth="300" prefHeight="150">
+                <Label id="signatureTextLabel" text="Coded by Kani"/>
+            </VBox>
+        </VBox>
+    </left>
+
+    <center>
+        <VBox id="centerContentVBox">
+            <Label fx:id="contentTitle" alignment="CENTER" prefWidth="600"
+                                text="UPDATE BUDGET" textFill="white"/>
+            <VBox VBox.vgrow="ALWAYS">
+<!--                <TableView fx:id="updateBudgetTableView">-->
+<!--                    <columns>-->
+<!--                        <TableColumn text="Description">-->
+<!--                            <cellValueFactory>-->
+<!--                                <PropertyValueFactory property="description"/>-->
+<!--                            </cellValueFactory>-->
+<!--                        </TableColumn>-->
+<!--                        <TableColumn text="Amount">-->
+<!--                            <cellValueFactory>-->
+<!--                                <PropertyValueFactory property="transactionAmount"/>-->
+<!--                            </cellValueFactory>-->
+<!--                        </TableColumn>-->
+<!--                        <TableColumn text="Type">-->
+<!--                            <cellValueFactory>-->
+<!--                                <PropertyValueFactory property="transactionType"/>-->
+<!--                            </cellValueFactory>-->
+<!--                        </TableColumn>-->
+<!--                        <TableColumn text="Monthly">-->
+<!--                            <cellValueFactory>-->
+<!--                                <PropertyValueFactory property="isRecurrent"/>-->
+<!--                            </cellValueFactory>-->
+<!--                        </TableColumn>-->
+<!--                    </columns>-->
+<!--                </TableView>-->
+            </VBox>
+
+            <HBox>
+                <TextField fx:id="transactionTypeTextField" promptText="Type"/>
+                <TextField fx:id="transactionDescriptionTextField" promptText="Short Description"/>
+                <Label text="Category: "/>
+                <ComboBox fx:id="transactionCategoryComboBox">
+                    <items>
+                        <FXCollections fx:factory="observableArrayList">
+                            <String fx:value="Bills"/>
+                            <String fx:value="Car"/>
+                            <String fx:value="Option 3"/>
+                            <String fx:value="Option 4"/>
+                        </FXCollections>
+                    </items>
+                </ComboBox>
+            </HBox>
+            <HBox>
+                <TextField fx:id="transactionAmountTextField" promptText="Amount"/>
+                <ComboBox fx:id="transactionCurrencyComboBox">
+                    <items>
+                        <FXCollections fx:factory="observableArrayList">
+                            <String fx:value="USD"/>
+                            <String fx:value="Roubles"/>
+                        </FXCollections>
+                    </items>
+                    <value>
+                        <String fx:value="Roubles"/>
+                    </value>
+                </ComboBox>
+                <RadioButton fx:id="isRecurrentRadioButton" text="Monthly" />
+                <Label text="Date"/>
+                <DatePicker fx:id="transactionDate"/>
+                <Button fx:id="addBudgetItemButton" text="Add" onAction="#handleAddBudgetItemButtonAction"/>
+            </HBox>
+        </VBox>
+    </center>
+</BorderPane>
